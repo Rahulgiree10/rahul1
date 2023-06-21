@@ -39,18 +39,34 @@
       border-radius: 4px;
       margin-bottom: 20px;
     }
+
+    .button-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      border-radius: 4px;
+      background-color: #333;
+      color: #fff;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <div class="card-container">
-    <% blogs.forEach (blog =>{ %>
+  <div class="card-container"> 
     <div class="card">
-      <h1 class="title"><%-blog.title %></h1>
-      <p class="description"><%-blog.Description %></p>
-      <img class="image" src=<%-blog.Image %> alt="Image Description">
-      <a href="/single/<%-blog.id%>"> See more</a>
+      <h1 class="title"><%-blog.Title%></h1>
+      <p class="description"><%-blog.Description%></p>
+      <img class="image" src="<%-blog.Image %>" alt="Image Description">
+      <p><%-blog.createdAt%></p>
+      <div class="button-container">
+        <a href="/delete/<%-blog.id%>"><button class="button"> Delete</button></a>
+        <button class="button">Edit</button>
+      </div>
     </div>
-    <% }) %>
   </div>
 </body>
 </html>
