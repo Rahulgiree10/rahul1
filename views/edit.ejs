@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333333;
+            text-align: center;
+        }
+        
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        input[type="title"],
+        input[type="description"],
+        input[type="file"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fill the details</h1>
+    <form  action="/updateBlog/<%-blog.id %>" method="POST" enctype="multipart/form-data">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" name="title" id="" placeholder="Title of the blog..." value="<%=blog.title %>">
+        <br><br>
+
+        <label for="description">Description:</label>
+        <textarea type="text" class="form-control description-field" name="description" value="<%=blog.description%>"></textarea>
+        <br><br>
+
+        <label for="image">Image:</label>
+        <input type="file" name="image" src="<%=blog.image %>" required>
+        <br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function preview(){
+            frame.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>

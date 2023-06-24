@@ -49,3 +49,34 @@ exports.index = async (req, res) => {
     });
     res.redirect("/");
   }
+
+  exports.edit = async (req, res) => {
+    const blogs = await db.blog.findAll({
+      where:{
+        id: req.params.id
+      }
+    });
+
+    res.render("edit",{blog: blogs[0]});
+  };
+
+  exports.updateBlog = async (req, res) => {
+    updatedData = {
+      title: req.body.title,
+      description: req.body.description,
+    };
+  
+    //Update image only if new image is selected
+    if (req.file) {
+      const image = "http://localhost:5000/" + req.file.filename;
+      updatedData.image = image;
+    }
+  
+    await blogs.update(updatedData, {
+      where: {
+        id: req.params.id,
+      },
+    })
+    console.log("Updated successfully")
+    res.redirect("/")
+  }

@@ -29,6 +29,11 @@ app.get("/single/:id", blogController.single);
 
 app.get("/delete/:id", blogController.delete);
 
+app.get("/edit/:id",blogController.edit)
+
+app.post("/updateBlog/:id", upload.single('image'), blogController.updateBlog);
+
+
 //starting the server
 app.listen(port, () => {
     console.log("Node server started at port 4000");

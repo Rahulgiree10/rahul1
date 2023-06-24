@@ -63,8 +63,8 @@
       <img class="image" src="<%-blog.Image %>" alt="Image Description">
       <p><%-blog.createdAt%></p>
       <div class="button-container">
-        <a href="/delete/<%-blog.id%>"><button class="button"> Delete</button></a>
-        <button class="button">Edit</button>
+        <a href="/edit/<%=blog.id%>"><button class="button"> Delete</button></a>
+        <a href="/edit/<%-blog.id %>"><button class="button">Edit</button></a>
       </div>
     </div>
   </div>
